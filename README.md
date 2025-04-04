@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flashcard App with Supabase and Next.js
+
+A modern flashcard application built with Next.js, Supabase, and Tailwind CSS. This app supports spaced repetition learning and different types of flashcards.
+
+## Features
+
+- User authentication with email/password and social login
+- Deck management (create, read, update, delete)
+- Card management (create, read, update, delete)
+- Spaced repetition study system using the SuperMemo 2 algorithm
+- Multiple card types:
+  - Text cards (front/back)
+  - Code cards (JavaScript execution)
+- Responsive UI with Tailwind CSS
+- Type safety with TypeScript
+- Secure database with Row Level Security
+
+## Card Types
+
+### Text Cards
+
+The traditional flashcard format with a front (question) and back (answer).
+
+```
+Front: What is the capital of France?
+Back: Paris
+```
+
+### Code Cards
+
+Interactive cards that allow users to write and execute JavaScript code. These cards include:
+
+- A question or problem statement
+- A code editor where users can write JavaScript code
+- Expected output that the code should produce
+- Real-time code execution in a sandboxed environment
+
+Example:
+```
+Question: Write a function that returns the sum of two numbers.
+
+Code:
+function add(a, b) {
+  return a + b;
+}
+console.log(add(5, 3));
+
+Expected Output: 8
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 14.x or later
+- npm or yarn
+- Supabase account
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Set up environment variables:
+   Create a `.env.local` file with the following variables:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+   ```
+4. Run the development server:
+   ```
+   npm run dev
+   ```
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Database Setup
 
-## Learn More
+1. Go to your Supabase project
+2. Navigate to SQL Editor
+3. Run the SQL scripts in the `supabase/migrations` directory
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Sign in or create an account
+2. Create decks to organize your flashcards
+3. Add cards to your decks (text or code)
+4. Study your cards using the spaced repetition system
+5. Track your progress over time
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
