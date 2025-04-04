@@ -1,94 +1,104 @@
-# Flashcard App with Supabase and Next.js
+<a href="https://demo-nextjs-with-supabase.vercel.app/">
+  <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
+  <h1 align="center">Next.js and Supabase Starter Kit</h1>
+</a>
 
-A modern flashcard application built with Next.js, Supabase, and Tailwind CSS. This app supports spaced repetition learning and different types of flashcards.
+<p align="center">
+ The fastest way to build apps with Next.js and Supabase
+</p>
+
+<p align="center">
+  <a href="#features"><strong>Features</strong></a> ·
+  <a href="#demo"><strong>Demo</strong></a> ·
+  <a href="#deploy-to-vercel"><strong>Deploy to Vercel</strong></a> ·
+  <a href="#clone-and-run-locally"><strong>Clone and run locally</strong></a> ·
+  <a href="#feedback-and-issues"><strong>Feedback and issues</strong></a>
+  <a href="#more-supabase-examples"><strong>More Examples</strong></a>
+</p>
+<br/>
 
 ## Features
 
-- User authentication with email/password and social login
-- Deck management (create, read, update, delete)
-- Card management (create, read, update, delete)
-- Spaced repetition study system using the SuperMemo 2 algorithm
-- Multiple card types:
-  - Text cards (front/back)
-  - Code cards (JavaScript execution)
-- Responsive UI with Tailwind CSS
-- Type safety with TypeScript
-- Secure database with Row Level Security
+- Works across the entire [Next.js](https://nextjs.org) stack
+  - App Router
+  - Pages Router
+  - Middleware
+  - Client
+  - Server
+  - It just works!
+- supabase-ssr. A package to configure Supabase Auth to use cookies
+- Styling with [Tailwind CSS](https://tailwindcss.com)
+- Components with [shadcn/ui](https://ui.shadcn.com/)
+- Optional deployment with [Supabase Vercel Integration and Vercel deploy](#deploy-your-own)
+  - Environment variables automatically assigned to Vercel project
 
-## Card Types
+## Demo
 
-### Text Cards
+You can view a fully working demo at [demo-nextjs-with-supabase.vercel.app](https://demo-nextjs-with-supabase.vercel.app/).
 
-The traditional flashcard format with a front (question) and back (answer).
+## Deploy to Vercel
 
-```
-Front: What is the capital of France?
-Back: Paris
-```
+Vercel deployment will guide you through creating a Supabase account and project.
 
-### Code Cards
+After installation of the Supabase integration, all relevant environment variables will be assigned to the project so the deployment is fully functioning.
 
-Interactive cards that allow users to write and execute JavaScript code. These cards include:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&demo-title=nextjs-with-supabase&demo-description=This+starter+configures+Supabase+Auth+to+use+cookies%2C+making+the+user%27s+session+available+throughout+the+entire+Next.js+app+-+Client+Components%2C+Server+Components%2C+Route+Handlers%2C+Server+Actions+and+Middleware.&demo-url=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2F&external-id=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-supabase&demo-image=https%3A%2F%2Fdemo-nextjs-with-supabase.vercel.app%2Fopengraph-image.png)
 
-- A question or problem statement
-- A code editor where users can write JavaScript code
-- Expected output that the code should produce
-- Real-time code execution in a sandboxed environment
+The above will also clone the Starter kit to your GitHub, you can clone that locally and develop locally.
 
-Example:
-```
-Question: Write a function that returns the sum of two numbers.
+If you wish to just develop locally and not deploy to Vercel, [follow the steps below](#clone-and-run-locally).
 
-Code:
-function add(a, b) {
-  return a + b;
-}
-console.log(add(5, 3));
+## Clone and run locally
 
-Expected Output: 8
-```
+1. You'll first need a Supabase project which can be made [via the Supabase dashboard](https://database.new)
 
-## Getting Started
+2. Create a Next.js app using the Supabase Starter template npx command
 
-### Prerequisites
-
-- Node.js 14.x or later
-- npm or yarn
-- Supabase account
-
-### Installation
-
-1. Clone the repository
-2. Install dependencies:
+   ```bash
+   npx create-next-app --example with-supabase with-supabase-app
    ```
-   npm install
+
+   ```bash
+   yarn create next-app --example with-supabase with-supabase-app
    ```
-3. Set up environment variables:
-   Create a `.env.local` file with the following variables:
+
+   ```bash
+   pnpm create next-app --example with-supabase with-supabase-app
    ```
-   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+
+3. Use `cd` to change into the app's directory
+
+   ```bash
+   cd with-supabase-app
    ```
-4. Run the development server:
+
+4. Rename `.env.example` to `.env.local` and update the following:
+
    ```
+   NEXT_PUBLIC_SUPABASE_URL=[INSERT SUPABASE PROJECT URL]
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=[INSERT SUPABASE PROJECT API ANON KEY]
+   ```
+
+   Both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` can be found in [your Supabase project's API settings](https://app.supabase.com/project/_/settings/api)
+
+5. You can now run the Next.js local development server:
+
+   ```bash
    npm run dev
    ```
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-### Database Setup
+   The starter kit should now be running on [localhost:3000](http://localhost:3000/).
 
-1. Go to your Supabase project
-2. Navigate to SQL Editor
-3. Run the SQL scripts in the `supabase/migrations` directory
+6. This template comes with the default shadcn/ui style initialized. If you instead want other ui.shadcn styles, delete `components.json` and [re-install shadcn/ui](https://ui.shadcn.com/docs/installation/next)
 
-## Usage
+> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
 
-1. Sign in or create an account
-2. Create decks to organize your flashcards
-3. Add cards to your decks (text or code)
-4. Study your cards using the spaced repetition system
-5. Track your progress over time
+## Feedback and issues
 
-## License
+Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
 
-MIT
+## More Supabase examples
+
+- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
+- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
+- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
